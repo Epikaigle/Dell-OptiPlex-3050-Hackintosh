@@ -149,15 +149,21 @@ function browserLanguage() {
   return 'en';
 }
 
+let currentLanguage = 'en';
+
 function setLanguage(lang) {
   const selected = translations[lang] ? lang : 'en';
   const dict = translations[selected];
 
   document.documentElement.lang = selected === 'zh' ? 'zh-CN' : selected;
-  document.querySelectorAll('[data-i18n]').forEach((element) => {
-    const key = element.dataset.i18n;
-    if (dict[key] !== undefined) element.textContent = dict[key];
-  });
+
+  if (selected !== currentLanguage) {
+    document.querySelectorAll('[data-i18n]').forEach((element) => {
+      const key = element.dataset.i18n;
+      if (dict[key] !== undefined) element.textContent = dict[key];
+    });
+    currentLanguage = selected;
+  }
 
   if (languageSelect) languageSelect.value = selected;
   localStorage.setItem('site-language', selected);
