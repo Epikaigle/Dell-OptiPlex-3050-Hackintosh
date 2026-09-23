@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Epikaigle/Hackintosh_Dell_Optiplex_3050"><img src="https://img.shields.io/badge/Platform-Dell%20OptiPlex%203050-007DB8?style=flat-square" alt="Dell OptiPlex 3050"></a>
+  <a href="https://github.com/Epikaigle/Dell-OptiPlex-3050-Hackintosh"><img src="https://img.shields.io/badge/Platform-Dell%20OptiPlex%203050-007DB8?style=flat-square" alt="Dell OptiPlex 3050"></a>
   <img src="https://img.shields.io/badge/macOS-Sequoia-000000?style=flat-square&logo=apple" alt="macOS Sequoia">
   <img src="https://img.shields.io/badge/Bootloader-OpenCore-6E40C9?style=flat-square" alt="OpenCore">
   <img src="https://img.shields.io/badge/SMBIOS-iMac19%2C1-555555?style=flat-square" alt="iMac19,1">
@@ -216,7 +216,7 @@ Because the repository is public, **you should never rely on those published ide
 You can clone the repository:
 
 ```bash
-git clone https://github.com/Epikaigle/Hackintosh_Dell_Optiplex_3050.git
+git clone https://github.com/Epikaigle/Dell-OptiPlex-3050-Hackintosh.git
 ```
 
 Or use GitHub's **Code → Download ZIP** option.
@@ -227,7 +227,7 @@ A dedicated presentation website is included in the `docs/` folder and is design
 
 Once Pages is enabled for this repository, the expected project URL is:
 
-**https://epikaigle.github.io/Hackintosh_Dell_Optiplex_3050/**
+**https://epikaigle.github.io/Dell-OptiPlex-3050-Hackintosh/**
 
 ## Credits
 
