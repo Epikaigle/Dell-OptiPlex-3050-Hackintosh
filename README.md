@@ -1,7 +1,7 @@
 # Dell OptiPlex 3050 Hackintosh — macOS Sequoia
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/da3c3545-90bd-4273-8983-378843f7a7f1" alt="Dell OptiPlex 3050 running macOS Sequoia" width="850">
+  <img src="https://github.com/user-attachments/assets/da3c3545-90bd-4273-8983-378843f7a7f1" alt="Dell OptiPlex 3050 running macOS Sequoia" width="420">
 </p>
 
 <p align="center">
@@ -138,17 +138,31 @@ This also makes the EFI suitable for multi-boot environments where OpenCore need
 
 ## Installation
 
+The steps below use this repository's preconfigured EFI. For the underlying OpenCore procedure, refer to the [Dortania OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/).
+
 ### 1. Create a macOS installer
 
 Create a genuine macOS installer using Apple's official macOS installer / recovery resources.
+
+Useful Dortania guides:
+
+- [Creating the USB / installer](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/)
+- [Create the installer from macOS](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/mac-install.html)
+- [Create the installer from Windows](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/windows-install.html)
+- [Create the installer from Linux](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/linux-install.html)
 
 ### 2. Prepare the EFI partition
 
 Mount the EFI partition of your USB installer or system drive.
 
+- [Dortania — Adding the base OpenCore files / EFI structure](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/opencore-efi.html)
+- [Dortania — Mounting and moving OpenCore between EFI partitions](https://dortania.github.io/OpenCore-Post-Install/universal/oc2hdd.html)
+
 ### 3. Copy the EFI folder
 
 Copy the repository's `EFI` folder to the root of the EFI partition.
+
+- [Dortania — Double-checking the EFI structure](https://dortania.github.io/OpenCore-Install-Guide/installation/installation-process.html#double-checking-your-work)
 
 The result should look like:
 
@@ -171,13 +185,25 @@ Generate your own unique values for the `iMac19,1` SMBIOS before signing in to A
 
 A public EFI should be treated as a template; machine identifiers must be unique per installation.
 
+See [Dortania — PlatformInfo](https://dortania.github.io/OpenCore-Install-Guide/config.plist/kaby-lake.html#platforminfo) for the SMBIOS procedure and GenSMBIOS guidance.
+
 ### 5. Configure the BIOS
 
 Use a configuration appropriate for OpenCore/macOS. In general this means using **UEFI boot**, SATA in **AHCI** mode and disabling incompatible firmware features such as Secure Boot unless you have deliberately configured them for your OpenCore setup.
 
+See [Dortania — Intel BIOS settings for Kaby Lake](https://dortania.github.io/OpenCore-Install-Guide/config.plist/kaby-lake.html#intel-bios-settings). Not every option listed by Dortania will necessarily exist in the Dell firmware.
+
 ### 6. Boot through OpenCore
 
 Select the OpenCore USB/EFI entry from the Dell boot menu, then start the macOS installer.
+
+See [Dortania — Installation Process](https://dortania.github.io/OpenCore-Install-Guide/installation/installation-process.html) for the OpenCore picker, installer and reboot sequence.
+
+### 7. Move OpenCore to the internal drive
+
+After macOS boots correctly from the USB EFI, copy the known-working EFI to the EFI partition of the internal macOS drive.
+
+See [Dortania — Moving OpenCore from USB to macOS Drive](https://dortania.github.io/OpenCore-Post-Install/universal/oc2hdd.html).
 
 ## Boot arguments
 
