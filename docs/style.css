@@ -34,6 +34,30 @@ a:hover { color: var(--blue-hover); text-decoration: underline; }
 button, select { font: inherit; }
 code, pre { font-family: "SFMono-Regular", "SF Mono", ui-monospace, Menlo, Monaco, Consolas, monospace; }
 
+.skip-link {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  z-index: 1000;
+  padding: 10px 14px;
+  border-radius: 980px;
+  color: #fff;
+  background: #1d1d1f;
+  font-size: 13px;
+  font-weight: 600;
+  transform: translateY(-160%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid rgba(0, 102, 204, .45);
+  outline-offset: 3px;
+}
+
 .sr-only {
   position: absolute;
   width: 1px; height: 1px;
@@ -284,7 +308,7 @@ h3 {
   min-height: 64px;
   padding: 17px 0;
   display: grid;
-  grid-template-columns: 1fr 1.8fr auto;
+  grid-template-columns: 190px minmax(0, 1fr) 180px;
   gap: 24px;
   align-items: center;
   border-bottom: 1px solid var(--line);
@@ -304,7 +328,9 @@ h3 {
 }
 
 .status {
+  width: 180px;
   justify-self: end;
+  text-align: right;
   font-size: 12px;
   white-space: nowrap;
 }
@@ -481,7 +507,12 @@ footer {
 
   .spec-row { grid-template-columns: 1fr auto; gap: 6px 18px; }
   .spec-value { grid-column: 1 / -1; grid-row: 2; }
-  .status { grid-column: 2; grid-row: 1; }
+  .status {
+    width: auto;
+    grid-column: 2;
+    grid-row: 1;
+    text-align: right;
+  }
 }
 
 @media (max-width: 680px) {
