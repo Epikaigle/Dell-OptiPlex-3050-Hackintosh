@@ -1,0 +1,43 @@
+name: Optimize project image
+
+on:
+  push:
+    paths:
+      - ".github/workflows/optimize-image.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Download source image
+        run: |
+          mkdir -p docs/assets
+          curl -L --fail --retry 3 \
+            "https://github.com/user-attachments/assets/da3c3545-90bd-4273-8983-378843f7a7f1" \
+            -o /tmp/hackintosh.png
+
+      - name: Convert image to WebP
+        run: |
+          python -m pip install --quiet Pillow
+          python <<'PY'
+          from PIL import Image
+          image = Image.open('/tmp/hackintosh.png').convert('RGB')
+          image.save('docs/assets/hackintosh.webp', 'WEBP', quality=82, method=6)
+          print('source:', image.size)
+          PY
+          ls -lh /tmp/hackintosh.png docs/assets/hackintosh.webp
+
+      - name: Commit optimized image
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/assets/hackintosh.webp
+          git diff --cached --quiet && exit 0
+          git commit -m "perf: add optimized project image"
+          git push
