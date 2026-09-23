@@ -3,329 +3,337 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080a10">
-  <meta name="description" content="OpenCore EFI for Dell OptiPlex 3050 running macOS Sequoia, with Intel HD 630 graphics, audio, Ethernet, USB and sensor support.">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Documentation and overview for the Dell OptiPlex 3050 OpenCore EFI configured for macOS Sequoia.">
   <meta property="og:title" content="Dell OptiPlex 3050 Hackintosh">
-  <meta property="og:description" content="A ready-to-use OpenCore EFI configuration for macOS Sequoia on Dell OptiPlex 3050.">
+  <meta property="og:description" content="OpenCore EFI documentation for macOS Sequoia on the Dell OptiPlex 3050.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://github.com/user-attachments/assets/da3c3545-90bd-4273-8983-378843f7a7f1">
   <meta name="twitter:card" content="summary_large_image">
-  <title>Dell OptiPlex 3050 Hackintosh · OpenCore EFI</title>
+  <title>Dell OptiPlex 3050 Hackintosh</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='6' y='8' width='52' height='38' rx='8' fill='%23111627' stroke='%237c9cff' stroke-width='4'/%3E%3Cpath d='M22 56h20M32 46v10' stroke='%237c9cff' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='27' r='8' fill='%237c9cff'/%3E%3C/svg%3E">
 </head>
-<body>
-  <div class="background" aria-hidden="true">
-    <div class="orb orb-one"></div>
-    <div class="orb orb-two"></div>
-    <div class="grid"></div>
-  </div>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="#top" aria-label="OptiPlex 3050 Hackintosh home">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 36 36" role="img">
-            <rect x="5" y="5" width="26" height="20" rx="4"></rect>
-            <path d="M12 31h12M18 25v6"></path>
-          </svg>
-        </span>
-        <span>
-          <strong>OptiPlex 3050</strong>
-          <small>OpenCore EFI</small>
-        </span>
-      </a>
+<body>
+  <header class="local-nav">
+    <div class="nav-inner">
+      <a class="project-name" href="#top">Dell OptiPlex 3050 Hackintosh</a>
 
       <button class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
       </button>
 
-      <nav class="nav" aria-label="Main navigation">
-        <a href="#features">Features</a>
-        <a href="#hardware">Hardware</a>
-        <a href="#stack">Stack</a>
-        <a href="#install">Install</a>
-        <a class="nav-github" href="https://github.com/Epikaigle/Hackintosh_Dell_Optiplex_3050" target="_blank" rel="noreferrer">
-          GitHub
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h10v10M19 5 8 16"></path></svg>
-        </a>
+      <nav class="nav-links" aria-label="Project navigation">
+        <a href="#overview">Overview</a>
+        <a href="#compatibility">Compatibility</a>
+        <a href="#installation">Installation</a>
+        <a href="#contents">EFI contents</a>
+        <a href="https://github.com/Epikaigle/Dell-OptiPlex-3050-Hackintosh" target="_blank" rel="noreferrer">GitHub ↗</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">
-            <span class="status-dot"></span>
-            macOS Sequoia · OpenCore
-          </div>
-
-          <h1>macOS on the<br><span>Dell OptiPlex 3050.</span></h1>
-
-          <p class="hero-lead">
-            A complete OpenCore EFI configuration built for the Dell OptiPlex 3050,
-            bringing macOS Sequoia to compatible Intel hardware with graphics,
-            audio, Ethernet, USB and sensor support.
-          </p>
-
-          <div class="hero-actions">
-            <a class="button button-primary" href="https://github.com/Epikaigle/Hackintosh_Dell_Optiplex_3050/archive/refs/heads/main.zip">
-              Download ZIP
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 20h14"></path></svg>
-            </a>
-            <a class="button button-secondary" href="https://github.com/Epikaigle/Hackintosh_Dell_Optiplex_3050" target="_blank" rel="noreferrer">
-              View repository
-            </a>
-          </div>
-
-          <div class="hero-tags" aria-label="Project highlights">
-            <span>Intel HD 630</span>
-            <span>iMac19,1</span>
-            <span>AppleALC</span>
-            <span>Realtek Ethernet</span>
-          </div>
-        </div>
-
-        <div class="hero-visual">
-          <div class="window">
-            <div class="window-bar">
-              <div class="traffic"><i></i><i></i><i></i></div>
-              <span>OptiPlex 3050 · Sequoia</span>
-              <div class="window-spacer"></div>
-            </div>
-            <div class="screen">
-              <img src="https://github.com/user-attachments/assets/da3c3545-90bd-4273-8983-378843f7a7f1" alt="Dell OptiPlex 3050 running macOS Sequoia">
-              <div class="screen-shine"></div>
-            </div>
-          </div>
-          <div class="floating-card card-oc">
-            <span class="mini-icon">OC</span>
-            <div><strong>OpenCore</strong><small>UEFI bootloader</small></div>
-          </div>
-          <div class="floating-card card-ready">
-            <span class="check">✓</span>
-            <div><strong>EFI ready</strong><small>For compatible 3050 hardware</small></div>
-          </div>
-        </div>
+    <section class="intro section-white">
+      <div class="content narrow center">
+        <p class="eyebrow">OpenCore EFI · macOS Sequoia</p>
+        <h1>Dell OptiPlex 3050 Hackintosh</h1>
+        <p class="intro-copy">
+          An OpenCore EFI configuration for running macOS Sequoia on a compatible Dell OptiPlex 3050.
+          This page explains what the repository contains, how it works, and how to use it.
+        </p>
+        <p class="text-links">
+          <a href="https://github.com/Epikaigle/Dell-OptiPlex-3050-Hackintosh" target="_blank" rel="noreferrer">View the repository ↗</a>
+        </p>
       </div>
+
+      <figure class="project-image content image-width">
+        <img
+          src="https://github.com/user-attachments/assets/da3c3545-90bd-4273-8983-378843f7a7f1"
+          alt="Dell OptiPlex 3050 running macOS Sequoia"
+        >
+        <figcaption>Dell OptiPlex 3050 running macOS Sequoia.</figcaption>
+      </figure>
     </section>
 
-    <section class="stats-strip" aria-label="Project configuration summary">
-      <div class="container stats">
-        <div><strong>Sequoia</strong><span>macOS target</span></div>
-        <div><strong>HD 630</strong><span>Intel graphics</span></div>
-        <div><strong>11</strong><span>AppleALC layout</span></div>
-        <div><strong>iMac19,1</strong><span>SMBIOS model</span></div>
-      </div>
-    </section>
-
-    <section class="section" id="features">
-      <div class="container">
+    <section class="section section-gray" id="overview">
+      <div class="content">
         <div class="section-heading">
-          <div>
-            <span class="section-kicker">What this repository does</span>
-            <h2>The compatibility layer<br>between Dell hardware and macOS.</h2>
+          <p class="eyebrow">Overview</p>
+          <h2>What this repository is for.</h2>
+        </div>
+
+        <div class="two-column">
+          <div class="lead-copy">
+            <p>
+              The repository contains the <strong>EFI boot environment</strong> used by OpenCore.
+              It does not contain macOS and it is not a macOS installer.
+            </p>
           </div>
-          <p>
-            The repository is not an installer and does not contain macOS.
-            It provides the EFI files OpenCore needs to initialize the hardware,
-            patch macOS where necessary and boot the operating system.
+
+          <div class="body-copy">
+            <p>
+              OpenCore starts before macOS. It provides the ACPI patches, UEFI drivers, kernel extensions
+              and device properties needed for macOS to recognize the OptiPlex hardware correctly.
+            </p>
+            <p>
+              The current configuration uses an <strong>iMac19,1</strong> SMBIOS and is set up around
+              Intel HD Graphics 630, onboard audio, Realtek Ethernet, USB and Dell hardware sensors.
+            </p>
+          </div>
+        </div>
+
+        <div class="flow" aria-label="Boot process">
+          <div>
+            <span>1</span>
+            <strong>Dell UEFI</strong>
+            <small>Firmware starts the machine</small>
+          </div>
+          <i aria-hidden="true">→</i>
+          <div>
+            <span>2</span>
+            <strong>OpenCore</strong>
+            <small>Loads the EFI configuration</small>
+          </div>
+          <i aria-hidden="true">→</i>
+          <div>
+            <span>3</span>
+            <strong>macOS</strong>
+            <small>Boots with hardware patches</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-white" id="compatibility">
+      <div class="content">
+        <div class="section-heading">
+          <p class="eyebrow">Compatibility</p>
+          <h2>Current configuration.</h2>
+          <p class="section-intro">
+            OptiPlex 3050 machines can have different hardware. The table below describes the configuration
+            represented by this repository.
           </p>
         </div>
 
-        <div class="feature-grid">
-          <article class="feature-card featured">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"></rect><path d="M8 21h8M12 17v4"></path></svg>
-            </div>
-            <span class="feature-label">Graphics</span>
-            <h3>Intel HD Graphics 630</h3>
-            <p>Configured through WhateverGreen and Lilu with Intel framebuffer properties, HDMI 2.0 support and connector patches.</p>
-            <div class="code-pill">device-id 0x5912</div>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9v6h4l5 4V5L9 9H5Z"></path><path d="M18 9c1.3 1.6 1.3 4.4 0 6"></path></svg>
-            </div>
-            <span class="feature-label">Audio</span>
-            <h3>Native-style audio</h3>
-            <p>AppleALC handles the onboard HD Audio controller with layout ID 11.</p>
-            <div class="code-pill">alcid=11</div>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16v8H4z"></path><path d="M8 8V5h8v3M7 16v3m5-3v3m5-3v3"></path></svg>
-            </div>
-            <span class="feature-label">Network</span>
-            <h3>Realtek Ethernet</h3>
-            <p>Wired networking support is provided by RealtekRTL8111.</p>
-            <div class="code-pill">RealtekRTL8111.kext</div>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M12 7l-3-3m3 3 3-3M12 14l-4 4m4-4 4 4"></path></svg>
-            </div>
-            <span class="feature-label">USB</span>
-            <h3>USB device support</h3>
-            <p>USBInjectAll is included for USB port injection on the target platform.</p>
-            <div class="code-pill">USBInjectAll.kext</div>
-          </article>
-
-          <article class="feature-card">
-            <div class="feature-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v4H9zM6 7h12v14H6z"></path><path d="M9 11h6M9 15h6"></path></svg>
-            </div>
-            <span class="feature-label">Sensors</span>
-            <h3>Virtual Apple SMC</h3>
-            <p>VirtualSMC plus Dell, CPU and Super I/O plugins provide the SMC layer macOS expects.</p>
-            <div class="code-pill">VirtualSMC + sensors</div>
-          </article>
+        <div class="spec-list">
+          <div class="spec-row">
+            <span class="spec-name">Bootloader</span>
+            <span class="spec-value">OpenCore UEFI</span>
+            <span class="status supported">Configured</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-name">macOS</span>
+            <span class="spec-value">Sequoia</span>
+            <span class="status supported">Target</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-name">SMBIOS</span>
+            <span class="spec-value"><code>iMac19,1</code></span>
+            <span class="status note">Replace identifiers</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-name">Graphics</span>
+            <span class="spec-value">Intel HD Graphics 630 · WhateverGreen</span>
+            <span class="status supported">Configured</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-name">Audio</span>
+            <span class="spec-value">AppleALC · layout 11</span>
+            <span class="status supported">Configured</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-name">Ethernet</span>
+            <span class="spec-value">RealtekRTL8111</span>
+            <span class="status supported">Configured</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-name">USB</span>
+            <span class="spec-value">USBInjectAll</span>
+            <span class="status supported">Configured</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-name">Sensors</span>
+            <span class="spec-value">VirtualSMC · SMCProcessor · SMCSuperIO · SMCDellSensors</span>
+            <span class="status supported">Configured</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-name">Wi-Fi / Bluetooth</span>
+            <span class="spec-value">Depends on the adapter installed in the machine</span>
+            <span class="status hardware">Hardware dependent</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section hardware-section" id="hardware">
-      <div class="container">
-        <div class="section-heading compact">
-          <div>
-            <span class="section-kicker">Compatibility snapshot</span>
-            <h2>Built around the OptiPlex 3050.</h2>
-          </div>
-          <p>This EFI targets the hardware represented by the current configuration. OptiPlex 3050 units can ship with different components, so verify yours before using it unchanged.</p>
+    <section class="section section-gray" id="installation">
+      <div class="content">
+        <div class="section-heading">
+          <p class="eyebrow">Installation</p>
+          <h2>How to use the EFI.</h2>
+          <p class="section-intro">
+            The EFI is intended as a starting point for a compatible OptiPlex 3050.
+            Keep a backup of a known-working EFI before changing your installation.
+          </p>
         </div>
 
-        <div class="compat-card">
-          <div class="compat-row header-row">
-            <span>Component</span><span>Implementation</span><span>Status</span>
+        <ol class="steps">
+          <li>
+            <div class="step-number">1</div>
+            <div>
+              <h3>Create the macOS installer</h3>
+              <p>Obtain macOS from Apple and create your installer or recovery media separately.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-number">2</div>
+            <div>
+              <h3>Mount the EFI partition</h3>
+              <p>Mount the EFI partition of the USB installer or the target system disk.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-number">3</div>
+            <div>
+              <h3>Copy the EFI folder</h3>
+              <p>Place the repository's <code>EFI</code> folder at the root of the EFI partition.</p>
+            </div>
+          </li>
+          <li>
+            <div class="step-number">4</div>
+            <div>
+              <h3>Generate your own SMBIOS identifiers</h3>
+              <p>
+                Keep the <code>iMac19,1</code> model, but generate unique values for
+                <code>SystemSerialNumber</code>, <code>MLB</code>, <code>SystemUUID</code> and <code>ROM</code>.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-number">5</div>
+            <div>
+              <h3>Check the BIOS configuration</h3>
+              <p>
+                Use UEFI boot and settings appropriate for OpenCore/macOS, including AHCI for SATA.
+                Verify your own firmware configuration before changing options.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="step-number">6</div>
+            <div>
+              <h3>Boot OpenCore</h3>
+              <p>Select the OpenCore entry from the Dell boot menu, then start the macOS installer or system.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="command">
+          <div>
+            <span>Clone the repository</span>
+            <code>git clone https://github.com/Epikaigle/Dell-OptiPlex-3050-Hackintosh.git</code>
           </div>
-          <div class="compat-row"><strong>Boot</strong><span>OpenCore UEFI</span><em class="good">Supported</em></div>
-          <div class="compat-row"><strong>Graphics</strong><span>Intel HD 630 + WhateverGreen</span><em class="good">Supported</em></div>
-          <div class="compat-row"><strong>Audio</strong><span>AppleALC · layout 11</span><em class="good">Supported</em></div>
-          <div class="compat-row"><strong>Ethernet</strong><span>RealtekRTL8111</span><em class="good">Supported</em></div>
-          <div class="compat-row"><strong>USB</strong><span>USBInjectAll</span><em class="good">Supported</em></div>
-          <div class="compat-row"><strong>Sensors</strong><span>VirtualSMC ecosystem</span><em class="good">Supported</em></div>
-          <div class="compat-row"><strong>Wi-Fi / Bluetooth</strong><span>Depends on installed adapter</span><em class="neutral">Hardware dependent</em></div>
-          <div class="compat-row"><strong>Apple services</strong><span>Requires unique SMBIOS data</span><em class="warn">Configure first</em></div>
+          <button type="button" data-copy="git clone https://github.com/Epikaigle/Dell-OptiPlex-3050-Hackintosh.git">Copy</button>
         </div>
       </div>
     </section>
 
-    <section class="section" id="stack">
-      <div class="container">
-        <div class="section-heading compact">
-          <div>
-            <span class="section-kicker">Under the hood</span>
-            <h2>Everything inside the EFI.</h2>
-          </div>
-          <p>A compact collection of OpenCore components, ACPI patches and kernel extensions tailored for the machine.</p>
+    <section class="section section-white" id="contents">
+      <div class="content">
+        <div class="section-heading">
+          <p class="eyebrow">EFI contents</p>
+          <h2>What is included.</h2>
         </div>
 
-        <div class="stack-layout">
-          <div class="tree-card">
-            <div class="tree-title">
-              <span class="folder-dot"></span>
-              Repository structure
-            </div>
-            <pre><code><span class="tree-root">EFI/</span>
-├── <span>BOOT/</span>
+        <div class="contents-grid">
+          <div class="file-tree" aria-label="EFI folder structure">
+            <pre><code>EFI/
+├── BOOT/
 │   └── BOOTx64.efi
-└── <span>OC/</span>
-    ├── <span>ACPI/</span>
+└── OC/
+    ├── ACPI/
     │   ├── SSDT-EC.aml
     │   ├── SSDT-HPET.aml
     │   └── SSDT-PLUG.aml
-    ├── <span>Drivers/</span>
-    ├── <span>Kexts/</span>
-    ├── <span>Tools/</span>
+    ├── Drivers/
+    ├── Kexts/
+    ├── Tools/
     ├── OpenCore.efi
     └── config.plist</code></pre>
           </div>
 
-          <div class="stack-list">
-            <article><span>01</span><div><strong>Lilu</strong><p>Core patching framework used by several Hackintosh plugins.</p></div></article>
-            <article><span>02</span><div><strong>WhateverGreen</strong><p>Intel graphics initialization and display patching.</p></div></article>
-            <article><span>03</span><div><strong>AppleALC</strong><p>Onboard audio support using native Apple audio frameworks.</p></div></article>
-            <article><span>04</span><div><strong>VirtualSMC</strong><p>Emulates the System Management Controller present on real Macs.</p></div></article>
-            <article><span>05</span><div><strong>RealtekRTL8111</strong><p>Driver support for the onboard Realtek Ethernet controller.</p></div></article>
-            <article><span>06</span><div><strong>SMC sensor plugins</strong><p>CPU, Super I/O and Dell-specific hardware monitoring support.</p></div></article>
+          <div class="components">
+            <article>
+              <h3>Lilu</h3>
+              <p>Base patching framework used by several other Hackintosh extensions.</p>
+            </article>
+            <article>
+              <h3>WhateverGreen</h3>
+              <p>Intel graphics initialization and framebuffer/display patching.</p>
+            </article>
+            <article>
+              <h3>AppleALC</h3>
+              <p>Audio support through Apple's native audio framework.</p>
+            </article>
+            <article>
+              <h3>VirtualSMC</h3>
+              <p>Provides the System Management Controller layer expected by macOS.</p>
+            </article>
+            <article>
+              <h3>RealtekRTL8111</h3>
+              <p>Support for the onboard Realtek Ethernet controller.</p>
+            </article>
+            <article>
+              <h3>Sensor plugins</h3>
+              <p>CPU, Super I/O and Dell-specific hardware monitoring.</p>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section install-section" id="install">
-      <div class="container">
-        <div class="install-panel">
-          <div class="install-intro">
-            <span class="section-kicker">Getting started</span>
-            <h2>From repository to boot menu.</h2>
-            <p>Use the EFI as a hardware-specific starting point. Keep a backup of any known-working EFI before making changes.</p>
-            <div class="clone-box">
-              <code>git clone https://github.com/Epikaigle/Hackintosh_Dell_Optiplex_3050.git</code>
-              <button class="copy-button" type="button" data-copy="git clone https://github.com/Epikaigle/Hackintosh_Dell_Optiplex_3050.git">Copy</button>
-            </div>
-          </div>
-
-          <ol class="steps">
-            <li><span>1</span><div><strong>Create your macOS installer</strong><p>Obtain macOS from Apple and prepare a bootable installer or recovery environment.</p></div></li>
-            <li><span>2</span><div><strong>Mount the EFI partition</strong><p>Mount the EFI partition on the installer USB or target system drive.</p></div></li>
-            <li><span>3</span><div><strong>Copy this repository's EFI</strong><p>Place the <code>EFI</code> folder at the root of the EFI partition.</p></div></li>
-            <li class="critical"><span>4</span><div><strong>Generate your own SMBIOS</strong><p>Replace SystemSerialNumber, MLB, SystemUUID and ROM before using Apple services.</p></div></li>
-            <li><span>5</span><div><strong>Boot through OpenCore</strong><p>Select the OpenCore UEFI entry from the Dell boot menu and start macOS.</p></div></li>
-          </ol>
-        </div>
-      </div>
-    </section>
-
-    <section class="section warning-section">
-      <div class="container">
-        <div class="warning-card">
-          <div class="warning-symbol">!</div>
+    <section class="section section-gray" id="notes">
+      <div class="content">
+        <div class="notice">
           <div>
-            <span class="section-kicker">Important before you use it</span>
-            <h2>Never reuse public SMBIOS identifiers.</h2>
+            <p class="eyebrow">Important</p>
+            <h2>Use your own SMBIOS data.</h2>
+          </div>
+          <div>
             <p>
-              The public <code>config.plist</code> contains PlatformInfo values. Treat them as placeholders.
-              Generate unique identifiers for your own installation before signing into iCloud, iMessage,
-              FaceTime or other Apple services.
+              The public <code>config.plist</code> contains PlatformInfo values. Do not use public identifiers
+              as permanent identifiers for your own machine. Generate unique values before signing in to
+              iCloud, iMessage, FaceTime or other Apple services.
+            </p>
+            <p class="text-links">
+              <a href="https://dortania.github.io/OpenCore-Install-Guide/config.plist/#platforminfo" target="_blank" rel="noreferrer">Read the OpenCore PlatformInfo guide ↗</a>
             </p>
           </div>
-          <a href="https://dortania.github.io/OpenCore-Install-Guide/config.plist/#platforminfo" target="_blank" rel="noreferrer">
-            OpenCore guide
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5h10v10M19 5 8 16"></path></svg>
-          </a>
         </div>
       </div>
     </section>
 
-    <section class="section final-section">
-      <div class="container final-card">
-        <span class="section-kicker">Dell OptiPlex 3050 · OpenCore · Sequoia</span>
-        <h2>A small PC.<br>A very different operating system.</h2>
-        <p>Explore the EFI, inspect the configuration and adapt it to your own OptiPlex hardware.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="https://github.com/Epikaigle/Hackintosh_Dell_Optiplex_3050" target="_blank" rel="noreferrer">Explore on GitHub</a>
-          <a class="button button-secondary" href="https://github.com/Epikaigle/Hackintosh_Dell_Optiplex_3050/archive/refs/heads/main.zip">Download repository</a>
-        </div>
+    <section class="section section-white last-section">
+      <div class="content narrow center">
+        <h2>Repository and documentation</h2>
+        <p class="section-intro">
+          The GitHub repository contains the EFI itself and the README contains the same technical information
+          in a format that can be consulted directly from GitHub.
+        </p>
+        <p class="text-links">
+          <a href="https://github.com/Epikaigle/Dell-OptiPlex-3050-Hackintosh" target="_blank" rel="noreferrer">Open GitHub repository ↗</a>
+          <a href="https://github.com/Epikaigle/Dell-OptiPlex-3050-Hackintosh/blob/main/README.md" target="_blank" rel="noreferrer">Read the README ↗</a>
+        </p>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footer-inner">
-      <div>
-        <strong>Hackintosh Dell OptiPlex 3050</strong>
-        <p>Community project. Not affiliated with Apple Inc. or Dell Technologies.</p>
-      </div>
-      <div class="footer-links">
-        <a href="https://github.com/Epikaigle/Hackintosh_Dell_Optiplex_3050">GitHub</a>
-        <a href="https://dortania.github.io/OpenCore-Install-Guide/">Dortania Guide</a>
-      </div>
+    <div class="footer-inner">
+      <p>Dell OptiPlex 3050 Hackintosh</p>
+      <p>Community project. Not affiliated with Apple Inc. or Dell Technologies.</p>
     </div>
   </footer>
 
