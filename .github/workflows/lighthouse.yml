@@ -1,0 +1,64 @@
+name: Lighthouse audit
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/lighthouse.yml"
+  workflow_run:
+    workflows:
+      - "Deploy website to GitHub Pages"
+    types:
+      - completed
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Run Lighthouse mobile
+        run: |
+          npx --yes lighthouse@latest "https://epikaigle.github.io/Dell-OptiPlex-3050-Hackintosh/" \
+            --output=json \
+            --output-path=./lighthouse-mobile.json \
+            --only-categories=performance,accessibility,best-practices,seo \
+            --chrome-flags="--headless --no-sandbox"
+
+      - name: Run Lighthouse desktop
+        run: |
+          npx --yes lighthouse@latest "https://epikaigle.github.io/Dell-OptiPlex-3050-Hackintosh/" \
+            --preset=desktop \
+            --output=json \
+            --output-path=./lighthouse-desktop.json \
+            --only-categories=performance,accessibility,best-practices,seo \
+            --chrome-flags="--headless --no-sandbox"
+
+      - name: Print scores
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          for (const mode of ['mobile', 'desktop']) {
+            const r = JSON.parse(fs.readFileSync(`lighthouse-${mode}.json`, 'utf8'));
+            const c = r.categories;
+            console.log(`LIGHTHOUSE ${mode.toUpperCase()}`);
+            console.log(`Performance: ${Math.round(c.performance.score * 100)}`);
+            console.log(`Accessibility: ${Math.round(c.accessibility.score * 100)}`);
+            console.log(`Best Practices: ${Math.round(c['best-practices'].score * 100)}`);
+            console.log(`SEO: ${Math.round(c.seo.score * 100)}`);
+            console.log('');
+          }
+          NODE
+
+      - name: Upload Lighthouse reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: |
+            lighthouse-mobile.json
+            lighthouse-desktop.json
