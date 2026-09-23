@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://epikaigle.github.io/Dell-OptiPlex-3050-Hackintosh/sitemap.xml
